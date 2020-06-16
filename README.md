@@ -26,7 +26,7 @@ If you want to make this on your own, the schematic that I have used is:
 
 If you want to make this on your own, the schematic that I have used is:
 
-![Breadboard view](Schematic/Breadboard.png)
+![Breadboard view](Schematic/Breadboard2.png)
 
 ## Installation and code usage
 1. Download this repository and unzip it somewhere. You **must** rename the unzipped folder `Nano_vu_line`.
