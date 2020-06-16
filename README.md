@@ -17,7 +17,7 @@ Demo of the previous VU meter showing all the available patterns:
 
 Updates to this design with the addition of brightness and sensistivity controls
 
-[![Youtube video of VU meter in action](http://img.youtube.com/vi/jhyUqx6inwI/0.jpg)](https://www.youtube.com/watch?v=jhyUqx6inwI)
+[![Youtube video of VU meter in action](http://img.youtube.com/vi/Nhc9MvOH0Gs/0.jpg)](https://www.youtube.com/watch?v=Nhc9MvOH0Gs)
 
 ## Setting up the circuit
 If you want to make this on your own, the schematic that I have used is:
