@@ -29,16 +29,16 @@
 # define STEREO true                // If true, L&R channels are independent. If false, both L&R outputs display same data from L audio channel [true]
 
 uint8_t volCountLeft = 0;           // Frame counter for storing past volume data
-int volLeft[SAMPLES];               // Collection of prior volume samples
-int lvlLeft = 0;                    // Current "dampened" audio level
-int minLvlAvgLeft = 0;              // For dynamic adjustment of graph low & high
-int maxLvlAvgLeft = 512;
+uint16_t volLeft[SAMPLES];               // Collection of prior volume samples
+uint16_t lvlLeft = 0;                    // Current "dampened" audio level
+uint16_t minLvlAvgLeft = 0;              // For dynamic adjustment of graph low & high
+uint16_t maxLvlAvgLeft = 512;
 
 uint8_t volCountRight = 0;          // Frame counter for storing past volume data
-int volRight[SAMPLES];              // Collection of prior volume samples
-int lvlRight = 0;                   // Current "dampened" audio level
-int minLvlAvgRight = 0;             // For dynamic adjustment of graph low & high
-int maxLvlAvgRight = 512;
+uint16_t volRight[SAMPLES];              // Collection of prior volume samples
+uint16_t lvlRight = 0;                   // Current "dampened" audio level
+uint16_t minLvlAvgRight = 0;             // For dynamic adjustment of graph low & high
+uint16_t maxLvlAvgRight = 512;
 
 CRGB ledsLeft[N_PIXELS];
 CRGB ledsRight[N_PIXELS];
@@ -68,7 +68,7 @@ bool autoChangeVisuals = false;
 Button modeBtn(BTN_PIN, DEBOUNCE_MS);
 
 void incrementButtonPushCounter() {
-  buttonPushCounter = ++buttonPushCounter %16;
+  buttonPushCounter = (buttonPushCounter + 1) %16;
   EEPROM.write(1, buttonPushCounter);
 }
 
@@ -217,7 +217,6 @@ void loop() {
 
 uint16_t auxReading(uint8_t channel) {
 
-  int n = 0;
   uint16_t height = 0;
 
   if(channel == 0) {
@@ -226,7 +225,7 @@ uint16_t auxReading(uint8_t channel) {
     n = (n <= NOISE) ? 0 : (n - NOISE); // Remove noise/hum
     lvlLeft = ((lvlLeft * 15) + n) >> 4; // "Dampened" reading else looks twitchy (>>3 is divide by 32)
     volLeft[volCountLeft] = n * ((float)(1023 - sensitivity) / 512);
-    volCountLeft = ++volCountLeft % SAMPLES;
+    volCountLeft = (volCountLeft + 1) % SAMPLES;
     // Calculate bar height based on dynamic min/max levels (fixed point):
     height = TOP * (lvlLeft - minLvlAvgLeft) / (long)(maxLvlAvgLeft - minLvlAvgLeft);
   }
@@ -237,11 +236,11 @@ uint16_t auxReading(uint8_t channel) {
     n = (n <= NOISE) ? 0 : (n - NOISE); // Remove noise/hum
     lvlRight = ((lvlRight * 15) + n) >> 4; // "Dampened" reading (else looks twitchy)
     volRight[volCountRight] = n * ((float)(1023 - sensitivity) / 512); // Save sample for dynamic leveling
-    volCountRight = ++volCountRight % SAMPLES;
+    volCountRight = (volCountRight +1 ) % SAMPLES;
     // Calculate bar height based on dynamic min/max levels (fixed point):
     height = TOP * (lvlRight - minLvlAvgRight) / (long)(maxLvlAvgRight - minLvlAvgRight);
   }
-  height = constrain(height, 0, TOP);
+  height = min(height, TOP);
   return height;
 }
 

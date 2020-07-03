@@ -81,6 +81,6 @@ void vu8() {
   averageReadings(0);
 
   EVERY_N_MILLISECONDS(20) {
-    scroll_color = ++scroll_color % 255;
+    scroll_color = (scroll_color + 1) % 255;
   }
 }

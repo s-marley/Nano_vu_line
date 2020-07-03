@@ -28,7 +28,7 @@ void vu4(bool is_centered, uint8_t channel) {
     
     // Black out ends
     for (i = 0; i < N_PIXELS; i++) {
-      uint8_t numBlack = (N_PIXELS - constrain(height, 0, N_PIXELS-1)) / 2;
+      uint8_t numBlack = (N_PIXELS - min(height, N_PIXELS-1)) / 2;
       if(i <= numBlack -1 || i >= N_PIXELS - numBlack) leds[i] = CRGB::Black;
     }
     

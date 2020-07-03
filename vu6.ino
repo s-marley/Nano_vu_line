@@ -8,7 +8,6 @@ void vu6(bool is_centered, uint8_t channel) {
   static uint8_t hueOffset = 30;
 
   CRGB* leds;
-  uint8_t i = 0;
   uint8_t *peak;      // Pointer variable declaration
   uint16_t height = auxReading(channel);
 

@@ -5,7 +5,6 @@
 void vu5(bool is_centered, uint8_t channel) {
 
   CRGB* leds;
-  uint8_t i = 0;
   uint8_t *peak;      // Pointer variable declaration
   uint16_t height = auxReading(channel);
 
@@ -60,9 +59,14 @@ void vu5(bool is_centered, uint8_t channel) {
     }
   
     // Draw peak dot
-    if (*peak > 0 && *peak <= N_PIXELS - 1)
-      if (*peak > N_PIXELS - (N_PIXELS / 3)) leds[*peak] = CRGB::Red;
-      else leds[*peak] = CRGB::Green;
+    if (*peak > 0 && *peak <= N_PIXELS - 1) {
+      if (*peak > N_PIXELS - (N_PIXELS / 3)) {
+        leds[*peak] = CRGB::Red;
+      }
+      else {
+        leds[*peak] = CRGB::Green;
+      }
+    }
   }
   
   dropPeak(channel);
