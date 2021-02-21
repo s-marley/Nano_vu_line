@@ -29,8 +29,8 @@ If you want to make this on your own, the schematic that I have used is:
 ![Breadboard view](Schematic/Breadboard2.png)
 
 ## Installation and code usage
-1. Download this repository and unzip it somewhere. You **must** rename the unzipped folder `Nano_vu_line`.
-2. Open the [Arduino IDE](https://www.arduino.cc/en/Main/Software) then open `Nano_vu_line.ino`
+1. Download this repository and unzip it somewhere.
+2. Open the [Arduino IDE](https://www.arduino.cc/en/Main/Software) then open `Nano_vu_line.ino`.
 3. You will need the FastLED and JC_Button libraries installed. In the IDE, go to `Tools` -> `Manage Libraries`. Search for `FastLED` and install the latest version and do the same with `JC_Button`.
 4. On the `Nano_vu_line.ino` tab, find the line that says `# define N_PIXELS` and change the number after it to the number of LEDs you have in each string.
 6. Plug in the Arduino and upload the code in the usual way, ensuring that the correct board type and com port are selected in the `Tools` menu.
