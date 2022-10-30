@@ -24,7 +24,7 @@ If you want to make this on your own, the schematic that I have used is:
 
 ![Wiring schematic](Schematic/Schematic.png)
 
-If you want to make this on your own, the schematic that I have used is:
+And a breadboard image for prototyping and testing:
 
 ![Breadboard view](Schematic/Breadboard2.png)
 
